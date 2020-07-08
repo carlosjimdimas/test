@@ -12,13 +12,12 @@ import java.util.List;
 public class PersonaJdbc  {
 
     private JdbcTemplate jdbcTemplate;
-    private DataSource dataSource;
-public PersonaJdbc() throws  ClassNotFoundException {
-    dataSource= new DriverManagerDataSource(DBConnection.getURL());
+
+    public PersonaJdbc() throws  ClassNotFoundException {
+        DataSource dataSource = new DriverManagerDataSource(DBConnection.getURL());
 }
 public List<Persona> findALL(){
     String sql="select * from person_schema.person";
-    List<Persona>personaList=jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Persona.class));
-    return personaList;
+    return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Persona.class));
 }
 }

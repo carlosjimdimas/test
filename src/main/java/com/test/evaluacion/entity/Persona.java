@@ -37,17 +37,17 @@ public class Persona {
     private Date fechaCreacion;
 
     public String code() {
-        String letras= new String("abcdefghijklmnopqrstuvwxyz");
+        String letras= "abcdefghijklmnopqrstuvwxyz";
         Random numeroletra= new Random();
-        String code="";
+        StringBuilder code= new StringBuilder();
 
 
         for(int i=0; i<10; i++){
             byte posletra =  (byte)numeroletra.nextInt(letras.length()-1);
-             code+=letras.charAt(posletra);
+             code.append(letras.charAt(posletra));
         }
-        code=code.toUpperCase();
-        return  code;
+        code = new StringBuilder(code.toString().toUpperCase());
+        return code.toString();
 
 
     }

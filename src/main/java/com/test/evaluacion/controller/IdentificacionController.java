@@ -25,9 +25,8 @@ public class IdentificacionController {
 
         @GetMapping("/identificacion/{id}")
         public Identificacion mostrarIdentificacion(@PathVariable Integer id) {
-            Identificacion identificacion = intIdentificacionService.findById(id);
 
-            return identificacion;
+            return intIdentificacionService.findById(id);
         }
 
         @PostMapping("/crear-identificacion")

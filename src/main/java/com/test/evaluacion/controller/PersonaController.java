@@ -25,9 +25,8 @@ public class PersonaController   {
 
     @GetMapping("/ver/{id}")
     public Persona verPersona(@PathVariable Integer id) {
-        Persona persona = personaService.findById(id);
 
-        return persona;
+        return personaService.findById(id);
     }
 
     @PostMapping("/crear")
