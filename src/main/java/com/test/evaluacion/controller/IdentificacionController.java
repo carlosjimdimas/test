@@ -20,12 +20,12 @@ public class IdentificacionController {
 
         //metodos handlers
         @GetMapping("/identificaciones")
-        public List<Identificacion> listar() {
+        public List<Identificacion> mostrarTodo() {
             return intIdentificacionService.findAll().stream().collect(Collectors.toList());
         }
 
         @GetMapping("/identificacion/{id}")
-        public Identificacion detalle(@PathVariable Integer id) {
+        public Identificacion mostrarIdentificacion(@PathVariable Integer id) {
             Identificacion identificacion = intIdentificacionService.findById(id);
 
             return identificacion;
@@ -38,9 +38,9 @@ public class IdentificacionController {
 
         }
 
-        @PutMapping("/editar-identificacion/{id}")
+        @PutMapping("/actualizar-identificacion/{id}")
         @ResponseStatus(HttpStatus.CREATED)
-        public Identificacion editar(@RequestBody Identificacion identificacion , @PathVariable Integer id){
+        public Identificacion update(@RequestBody Identificacion identificacion , @PathVariable Integer id){
             Identificacion identificacionDb = intIdentificacionService.findById(id);
             identificacionDb.setIdentificacionName(identificacion.getIdentificacionName());
             return  intIdentificacionService.save(identificacionDb);

@@ -1,10 +1,12 @@
 package com.test.evaluacion.entity;
 
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -26,12 +28,14 @@ public class Persona {
     private Integer id;
     @NotEmpty (message = "no puede estar vacio el nombre")
     @Column(name = "name")
+    @ApiModelProperty(example = "juan Lopez" , required = true, value = "the person name")
     private String nombre;
     @NotEmpty(message = "no puede estar vacia la edad")
     @Column(name = "age")
     private int edad;
     @Size(max = 1)
-    @Column(name = "gender" )
+    @ApiModelProperty(example = "H or F" ,value = "gender")
+    @Column(name = "gender")
     private String sexo;
     @Column(name = "code")
     private String codigo;
