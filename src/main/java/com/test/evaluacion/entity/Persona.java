@@ -40,15 +40,17 @@ public class Persona {
     private Date fechaCreacion;
 
     public String code() {
-        Random ran= new Random();
+        String letras= new String("abcdefghijklmnopqrstuvwxyz");
+        Random numeroletra= new Random();
+        String code="";
 
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < 10; i++) {
-            char c = (char)(ran.nextInt((int)(Character.MAX_VALUE)));
-            sb.append(c);
+
+        for(int i=0; i<10; i++){
+            byte posletra =  (byte)numeroletra.nextInt(letras.length()-1);
+             code+=letras.charAt(posletra);
         }
-
-        return  sb.toString();
+        code=code.toUpperCase();
+        return  code;
 
 
     }

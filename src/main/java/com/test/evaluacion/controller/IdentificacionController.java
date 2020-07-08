@@ -19,26 +19,26 @@ public class IdentificacionController {
         private IntIdentificacionService intIdentificacionService;
 
         //metodos handlers
-        @GetMapping("/listar")
+        @GetMapping("/identificaciones")
         public List<Identificacion> listar() {
             return intIdentificacionService.findAll().stream().collect(Collectors.toList());
         }
 
-        @GetMapping("/ver/{id}")
+        @GetMapping("/identificacion/{id}")
         public Identificacion detalle(@PathVariable Integer id) {
             Identificacion identificacion = intIdentificacionService.findById(id);
 
             return identificacion;
         }
 
-        @PostMapping("/crear")
+        @PostMapping("/crear-identificacion")
         @ResponseStatus(HttpStatus.CREATED)
         public Identificacion crear(@Valid @RequestBody Identificacion identificacion){
             return intIdentificacionService.save(identificacion);
 
         }
 
-        @PutMapping("/editar/{id}")
+        @PutMapping("/editar-identificacion/{id}")
         @ResponseStatus(HttpStatus.CREATED)
         public Identificacion editar(@RequestBody Identificacion identificacion , @PathVariable Integer id){
             Identificacion identificacionDb = intIdentificacionService.findById(id);
@@ -47,7 +47,7 @@ public class IdentificacionController {
 
         }
 
-        @DeleteMapping("/eliminar/{id}")
+        @DeleteMapping("/eliminar-identificacion/{id}")
         @ResponseStatus(HttpStatus.NO_CONTENT)
         public void eliminar(@PathVariable Integer id){
             intIdentificacionService.deleteById(id);
