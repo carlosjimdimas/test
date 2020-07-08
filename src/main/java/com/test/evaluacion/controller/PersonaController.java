@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,8 +35,12 @@ public class PersonaController   {
 
     @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
-    public Persona crear(@RequestBody Persona persona){
+    public Persona crear(@Valid  @RequestBody Persona persona){
+
+        persona.setCodigo(persona.code());
+
         return personaService.save(persona);
+
     }
 
     @PutMapping("/editar/{id}")

@@ -9,17 +9,17 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name ="Identificacion", schema = "identificacion_schema")
+@Table(name ="identificacion", schema = "identificacion_schema")
 public class Identificacion {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "id_identificacion")
     private Integer id;
     @NotNull
-    @Column(name = "identificacion_name")
+    @Column(name = "identification_name")
     private String identificacionName;
     @NotNull
-    @Column(name = "decription")
+    @Column(name = "description")
     private int descripcion;
 
     @Column(name = "created_at")

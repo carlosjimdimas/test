@@ -8,28 +8,30 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.Random;
 
 
 @Data
 @Entity(name = "Persona")
 
-@Table(name ="Person", schema = "person_schema")
+@Table(name ="person", schema = "person_schema")
 public class Persona {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
     private Integer id;
-    @NotNull
+    @NotEmpty (message = "no puede estar vacio el nombre")
     @Column(name = "name")
     private String nombre;
-    @NotNull
+    @NotEmpty(message = "no puede estar vacia la edad")
     @Column(name = "age")
     private int edad;
     @Size(max = 1)
-    @Column(name = "gender")
+    @Column(name = "gender" )
     private String sexo;
     @Column(name = "code")
     private String codigo;
@@ -38,8 +40,19 @@ public class Persona {
     private Date fechaCreacion;
 
     public String code() {
-        return "adfsd";
+        Random ran= new Random();
+
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < 10; i++) {
+            char c = (char)(ran.nextInt((int)(Character.MAX_VALUE)));
+            sb.append(c);
+        }
+
+        return  sb.toString();
+
+
     }
+
 
 
 }

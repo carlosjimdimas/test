@@ -1,7 +1,7 @@
 package com.test.evaluacion.service;
 
 import com.test.evaluacion.entity.Persona;
-import com.test.evaluacion.model.PersonaDAO;
+import com.test.evaluacion.repository.PersonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
