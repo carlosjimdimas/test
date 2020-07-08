@@ -24,8 +24,7 @@ public class PersonaController   {
     }
 
     @GetMapping("/ver/{id}")
-    public Persona verPersona(@PathVariable Integer id) { //cuando sea buscado por id en automatico Spring toma esta variable
-        // y la usa como argumento
+    public Persona verPersona(@PathVariable Integer id) {
         Persona persona = personaService.findById(id);
 
         return persona;
