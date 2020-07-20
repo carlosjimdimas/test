@@ -1,7 +1,7 @@
 package com.test.evaluacion.controller;
 
-import com.test.evaluacion.entity.Identificacion;
-import com.test.evaluacion.service.IntIdentificacionService;
+import com.test.evaluacion.entity.Identification;
+import com.test.evaluacion.service.IntIdentificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,44 +10,44 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-public class IdentificacionController {
+public class IdentificationController {
 
 
 
         @Autowired
-        private IntIdentificacionService intIdentificacionService;
+        private IntIdentificationService intIdentificationService;
 
         //metodos handlers
-        @GetMapping("/identificaciones")
-        public List<Identificacion> mostrarTodo() {
-            return intIdentificacionService.findAll().stream().collect(Collectors.toList());
+        @GetMapping("/identifications")
+        public List<Identification> showAllIdentifications() {
+            return intIdentificationService.findAll().stream().collect(Collectors.toList());
         }
 
-        @GetMapping("/identificacion/{id}")
-        public Identificacion mostrarIdentificacion(@PathVariable Integer id) {
+        @GetMapping("/see-identificacion/{id}")
+        public Identification showIdentification(@PathVariable Integer id) {
 
-            return intIdentificacionService.findById(id);
+            return intIdentificationService.findById(id);
         }
 
-        @PostMapping("/crear-identificacion")
+        @PostMapping("/create-identification")
         @ResponseStatus(HttpStatus.CREATED)
-        public Identificacion crear(@Valid @RequestBody Identificacion identificacion){
-            return intIdentificacionService.save(identificacion);
+        public Identification createIdentification(@Valid @RequestBody Identification identification){
+            return intIdentificationService.save(identification);
 
         }
 
-        @PutMapping("/actualizar-identificacion/{id}")
+        @PutMapping("/update-identification/{id}")
         @ResponseStatus(HttpStatus.CREATED)
-        public Identificacion update(@RequestBody Identificacion identificacion , @PathVariable Integer id){
-            Identificacion identificacionDb = intIdentificacionService.findById(id);
-            identificacionDb.setIdentificacionName(identificacion.getIdentificacionName());
-            return  intIdentificacionService.save(identificacionDb);
+        public Identification updateIdentification(@RequestBody Identification identification, @PathVariable Integer id){
+            Identification identificationDb = intIdentificationService.findById(id);
+            identificationDb.setIdentificationName(identification.getIdentificationName());
+            return  intIdentificationService.save(identificationDb);
 
         }
 
-        @DeleteMapping("/eliminar-identificacion/{id}")
+        @DeleteMapping("/delete-identification/{id}")
         @ResponseStatus(HttpStatus.NO_CONTENT)
-        public void eliminar(@PathVariable Integer id){
-            intIdentificacionService.deleteById(id);
+        public void deleteIdentification(@PathVariable Integer id){
+            intIdentificationService.deleteById(id);
         }
 }

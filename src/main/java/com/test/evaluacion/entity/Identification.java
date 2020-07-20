@@ -9,19 +9,15 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name ="identificacion", schema = "identificacion_schema")
-public class Identificacion {
+@Table(name ="identification", schema = "identificacion_schema")
+public class Identification {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    @Column(name = "id_identificacion")
-    private Integer id;
+    private Integer idIdentification;
     @NotNull
-    @Column(name = "identification_name")
-    private String identificacionName;
+    private String identificationName;
     @NotNull
-    @Column(name = "description")
-    private int descripcion;
-
-    @Column(name = "created_at")
+    private int description;
+    @Temporal(TemporalType.DATE)
     private Date createdAt;
 }

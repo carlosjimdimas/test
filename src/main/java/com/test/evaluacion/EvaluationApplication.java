@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class EvaluacionApplication {
+public class EvaluationApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(EvaluacionApplication.class, args);
+        SpringApplication.run(EvaluationApplication.class, args);
 
 
     }

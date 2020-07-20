@@ -1,7 +1,7 @@
 package com.test.evaluacion.controller;
 
-import com.test.evaluacion.entity.Persona;
-import com.test.evaluacion.service.IPersonaService;
+import com.test.evaluacion.entity.Person;
+import com.test.evaluacion.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,46 +11,46 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-public class PersonaController   {
+public class PersonController {
 
 
     @Autowired
-    private IPersonaService personaService;
+    private IPersonService personService;
 
     //metodos handlers
-    @GetMapping("/all-People")
-    public List<Persona> allPeople() {
-        return personaService.findAll().stream().collect(Collectors.toList());
+    @GetMapping("/all-people")
+    public List<Person> allPeople() {
+        return personService.findAll().stream().collect(Collectors.toList());
     }
 
-    @GetMapping("/ver/{id}")
-    public Persona verPersona(@PathVariable Integer id) {
+    @GetMapping("/see-person/{id}")
+    public Person seePerson(@PathVariable Integer id) {
 
-        return personaService.findById(id);
+        return personService.findById(id);
     }
 
-    @PostMapping("/crear")
+    @PostMapping("/create-person")
     @ResponseStatus(HttpStatus.CREATED)
-    public Persona nuevaPersona(@Valid  @RequestBody Persona persona){
+    public Person newPerson(@Valid  @RequestBody Person person){
 
-        persona.setCodigo(persona.code());
+        person.setCode(person.code());
 
-        return personaService.save(persona);
+        return personService.save(person);
 
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update-person/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Persona update(@RequestBody Persona persona , @PathVariable Integer id){
-        Persona personaDb = personaService.findById(id);
-        personaDb.setEdad(persona.getEdad());
-        return  personaService.save(personaDb);
+    public Person updatePerson(@RequestBody Person person, @PathVariable Integer id){
+        Person personDb = personService.findById(id);
+        personDb.setAge(person.getAge());
+        return  personService.save(personDb);
 
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/delete-person/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id){
-        personaService.deleteById(id);
+    public void deletePerson(@PathVariable Integer id){
+        personService.deleteById(id);
     }
 }

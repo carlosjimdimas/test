@@ -1,7 +1,7 @@
 package com.test.evaluacion.repository;
 
-import com.test.evaluacion.entity.Identificacion;
+import com.test.evaluacion.entity.Identification;
 import org.springframework.data.repository.CrudRepository;
 
-public interface IdentificacionDAO extends CrudRepository<Identificacion,Integer> {
+public interface IdentificationDAO extends CrudRepository<Identification,Integer> {
 }

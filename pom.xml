@@ -8,7 +8,7 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.test</groupId>
+	<groupId>com.schiller-americas</groupId>
 	<artifactId>evaluacion</artifactId>
 	<version>0.0.5-SNAPSHOT</version>
 	<name>evaluacion</name>
@@ -51,7 +51,6 @@
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <version>1.18.12</version>
     <scope>provided</scope>
 </dependency>
 
