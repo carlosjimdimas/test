@@ -11,16 +11,17 @@ import java.util.Random;
 
 
 @Data
-@Entity(name = "Persona")
+@Entity(name = "Person")
 
 @Table(name ="person", schema = "person_schema")
-public class Persona {
+public class Person {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
-    private Integer id;
+    private Integer idPersona;
     @NotEmpty (message = "no puede estar vacio el nombre")
-    @Column(name = "name")
+    
+    
     @ApiModelProperty(example = "juan Lopez" , required = true, value = "the person name")
     private String nombre;
     @NotEmpty(message = "no puede estar vacia la edad")
